@@ -15,7 +15,7 @@ func NewPlaylistPostgresRepository(db *gorm.DB) *PlaylistPostgresRepository {
 	return &PlaylistPostgresRepository{db: db}
 }
 
-func (r *PlaylistPostgresRepository) CreatePlayList(playlist *model.PlayList) {
+func (r *PlaylistPostgresRepository) CreatePlaylist(playlist *model.PlayList) {
 	result := r.db.Create(&playlist)
 
 	if result.Error != nil {
@@ -23,7 +23,7 @@ func (r *PlaylistPostgresRepository) CreatePlayList(playlist *model.PlayList) {
 	}
 }
 
-func (r *PlaylistPostgresRepository) DeletePlayListByID(id uuid.UUID) {
+func (r *PlaylistPostgresRepository) DeletePlaylistByID(id uuid.UUID) {
 	result := r.db.Delete(id)
 
 	if result.Error != nil {
@@ -31,7 +31,7 @@ func (r *PlaylistPostgresRepository) DeletePlayListByID(id uuid.UUID) {
 	}
 }
 
-func (r *PlaylistPostgresRepository) FindPlayListByID(id uuid.UUID) *model.PlayList {
+func (r *PlaylistPostgresRepository) FindPlaylistByID(id uuid.UUID) *model.PlayList {
 	playlist := &model.PlayList{PlaylistId: id}
 	result := r.db.First(playlist)
 	if result.Error != nil {

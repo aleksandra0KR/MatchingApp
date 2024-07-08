@@ -23,7 +23,7 @@ func (r *UserPostgresRepository) CreateUser(user *model.User) {
 	}
 }
 
-func (r *UserPostgresRepository) DeleteUser(id uuid.UUID) {
+func (r *UserPostgresRepository) DeleteUserByID(id uuid.UUID) {
 	result := r.db.Delete(id)
 
 	if result.Error != nil {
