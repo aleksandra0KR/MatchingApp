@@ -15,7 +15,7 @@ func NewPlaylistPostgresRepository(db *gorm.DB) *PlaylistPostgresRepository {
 	return &PlaylistPostgresRepository{db: db}
 }
 
-func (r *PlaylistPostgresRepository) CreatePlaylist(playlist *model.PlayList) {
+func (r *PlaylistPostgresRepository) CreatePlaylist(playlist *model.Playlist) {
 	result := r.db.Create(&playlist)
 
 	if result.Error != nil {
@@ -31,8 +31,8 @@ func (r *PlaylistPostgresRepository) DeletePlaylistByID(id uuid.UUID) {
 	}
 }
 
-func (r *PlaylistPostgresRepository) FindPlaylistByID(id uuid.UUID) *model.PlayList {
-	playlist := &model.PlayList{PlaylistId: id}
+func (r *PlaylistPostgresRepository) FindPlaylistByID(id uuid.UUID) *model.Playlist {
+	playlist := &model.Playlist{PlaylistId: id}
 	result := r.db.First(playlist)
 	if result.Error != nil {
 		log.Printf("Failed to find a user with id %s: %v", id, result.Error)

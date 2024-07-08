@@ -6,7 +6,7 @@ import (
 )
 
 type PlaylistRepository interface {
-	CreatePlaylist(playlist *model.PlayList)
+	CreatePlaylist(playlist *model.Playlist)
 	DeletePlaylistByID(id uuid.UUID)
-	FindPlaylistByID(id uuid.UUID) *model.PlayList
+	FindPlaylistByID(id uuid.UUID) *model.Playlist
 }
