@@ -5,9 +5,9 @@ import (
 	"gorm.io/gorm"
 )
 
-type PlayList struct {
+type Playlist struct {
 	gorm.Model
-	PlayListId       uuid.UUID `json:"playListId,omitempty" gorm:"type:uuid;default:uuid_generate_v4(), not null, primaryKey"`
+	PlaylistId       uuid.UUID `json:"playlistId,omitempty" gorm:"type:uuid;default:uuid_generate_v4(), not null, primaryKey"`
 	UserId           User      `json:"match,omitempty" gorm:"foreignKey:userId"`
 	Danceability     float64   `json:"danceability,omitempty" gorm:"type:decimal(7,6);"`
 	Energy           float64   `json:"energy,omitempty" gorm:"type:decimal(7,6);"`
