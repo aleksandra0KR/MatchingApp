@@ -11,7 +11,7 @@ type UserPostgresRepository struct {
 	db *gorm.DB
 }
 
-func NewQuestPostgresRepository(db *gorm.DB) *UserPostgresRepository {
+func NewUserPostgresRepository(db *gorm.DB) *UserPostgresRepository {
 	return &UserPostgresRepository{db: db}
 }
 
@@ -37,7 +37,6 @@ func (r *UserPostgresRepository) FindUserByID(id uuid.UUID) *model.User {
 	if result.Error != nil {
 		log.Printf("Failed to find a user with id %s: %v", id, result.Error)
 		return nil
-
 	}
 	return user
 }
