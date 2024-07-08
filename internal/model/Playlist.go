@@ -2,13 +2,11 @@ package model
 
 import (
 	"github.com/gofrs/uuid/v5"
-	"gorm.io/gorm"
 )
 
 type Playlist struct {
-	gorm.Model
-	PlaylistId       uuid.UUID `json:"playlistId,omitempty" gorm:"type:uuid;default:uuid_generate_v4(), not null, primaryKey"`
-	UserId           User      `json:"match,omitempty" gorm:"foreignKey:userId"`
+	ID               uuid.UUID `json:"id,omitempty" gorm:"type:uuid;default:uuid_generate_v4();primaryKey"`
+	UserID           uuid.UUID `json:"userId,omitempty" gorm:"type:uuid;references:ID;foreignKey:ID"`
 	Danceability     float64   `json:"danceability,omitempty" gorm:"type:decimal(7,6);"`
 	Energy           float64   `json:"energy,omitempty" gorm:"type:decimal(7,6);"`
 	Key              float64   `json:"key,omitempty" gorm:"type:decimal(7,6);"`

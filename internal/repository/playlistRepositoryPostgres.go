@@ -32,7 +32,7 @@ func (r *PlaylistPostgresRepository) DeletePlaylistByID(id uuid.UUID) {
 }
 
 func (r *PlaylistPostgresRepository) FindPlaylistByID(id uuid.UUID) *model.Playlist {
-	playlist := &model.Playlist{PlaylistId: id}
+	playlist := &model.Playlist{ID: id}
 	result := r.db.First(playlist)
 	if result.Error != nil {
 		log.Printf("Failed to find a user with id %s: %v", id, result.Error)
