@@ -7,8 +7,8 @@ import (
 
 type PlayList struct {
 	gorm.Model
-	ID               uuid.UUID `json:"id,omitempty" gorm:"type:uuid;default:uuid_generate_v4(), not null"`
-	UserId           string    `json:"userId,omitempty" gorm:"type:uuid, not null"`
+	PlayListId       uuid.UUID `json:"playListId,omitempty" gorm:"type:uuid;default:uuid_generate_v4(), not null, primaryKey"`
+	UserId           User      `json:"match,omitempty" gorm:"foreignKey:userId"`
 	Danceability     float64   `json:"danceability,omitempty" gorm:"type:decimal(7,6);"`
 	Energy           float64   `json:"energy,omitempty" gorm:"type:decimal(7,6);"`
 	Key              float64   `json:"key,omitempty" gorm:"type:decimal(7,6);"`
