@@ -32,8 +32,14 @@ func (r *UserPostgresRepository) DeleteUser(id uuid.UUID) {
 }
 
 func (r *UserPostgresRepository) FindUserByID(id uuid.UUID) *model.User {
-	// TODO
-	return nil
+	user := &model.User{UserId: id}
+	result := r.db.First(user)
+	if result.Error != nil {
+		log.Printf("Failed to find a user with id %s: %v", id, result.Error)
+		return nil
+
+	}
+	return user
 }
 
 // FindMatch TODO
