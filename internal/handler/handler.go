@@ -2,6 +2,7 @@ package handler
 
 import (
 	"MatchingApp/internal/usecase"
+	"github.com/gin-gonic/gin"
 	"html/template"
 	"net/http"
 )
@@ -16,11 +17,18 @@ func NewHandler(service *usecase.UseCase, tpl *template.Template) *Handler {
 }
 
 func (h *Handler) Handle() http.Handler {
-	mux := http.NewServeMux()
-	mux.Handle("/MatchingApp", http.HandlerFunc(h.userHandler))
-	mux.Handle("/MatchingApp/", http.HandlerFunc(h.userHandler))
-	mux.Handle("/MatchingApp/createUser", http.HandlerFunc(h.userHandler))
-	mux.Handle("/MatchingApp/createUser/", http.HandlerFunc(h.userHandler))
+	r := gin.Default()
 
-	return mux
+	r.GET("/MatchingApp", h.userHandler)
+	r.GET("/MatchingApp/", h.userHandler)
+	r.POST("/MatchingApp/createUser", h.userHandler)
+	r.POST("/MatchingApp/createUser/", h.userHandler)
+	r.GET("/MatchingApp/login", h.userHandler)
+	r.GET("/MatchingApp/login/", h.userHandler)
+	r.POST("/MatchingApp/loginUser", h.userHandler)
+	r.POST("/MatchingApp/loginUser/", h.userHandler)
+	r.GET("/MatchingApp/validate", h.RequireAuth, h.Validate)
+	r.GET("/MatchingApp/validate/", h.RequireAuth, h.Validate)
+
+	return r
 }
