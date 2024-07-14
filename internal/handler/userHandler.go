@@ -2,7 +2,6 @@ package handler
 
 import (
 	"MatchingApp/internal/model"
-	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -16,28 +15,39 @@ func (h *Handler) userHandler(w http.ResponseWriter, r *http.Request) {
 		h.createUser(w, r)
 	case http.MethodDelete:
 	case http.MethodPut:
+	case http.MethodGet:
+		h.registrationUser(w, r)
 	default:
 		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
 	}
 }
 
-func (h *Handler) createUser(w http.ResponseWriter, r *http.Request) {
-	var user model.User
-	err := json.NewDecoder(r.Body).Decode(&user)
+func (h *Handler) registrationUser(w http.ResponseWriter, r *http.Request) {
+	log.Println("*****registrationUser running*****")
+	err := h.tpl.ExecuteTemplate(w, "registration.html", nil)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		log.Println(err)
+		return
 	}
+}
+
+func (h *Handler) createUser(w http.ResponseWriter, r *http.Request) {
+
+	fmt.Println("*****registerAuthHandler running*****")
+	r.ParseForm()
+	username := r.FormValue("username")
+	password := r.FormValue("password")
+	email := r.FormValue("email")
+
+	var user model.User
+	user.Username = username
+	user.Password = password
+	user.Email = email
 
 	h.service.UserUseCase.CreateUser(&user)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		log.Println(err)
-	}
 
 	log.Printf("createUser is completed")
 	w.WriteHeader(http.StatusCreated)
-	_, err = fmt.Fprint(w, "user is created ")
+	_, err := fmt.Fprint(w, "user is created ")
 	if err != nil {
 		return
 	}

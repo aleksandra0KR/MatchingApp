@@ -5,7 +5,7 @@ import (
 )
 
 type Playlist struct {
-	ID               uuid.UUID `json:"id,omitempty" gorm:"type:uuid;default:uuid_generate_v4();primaryKey"`
+	ID               uuid.UUID `json:"id,omitempty" gorm:"type:uuid;default:uuid_generate_v4()"`
 	UserID           uuid.UUID `json:"userId,omitempty" gorm:"type:uuid;references:ID;foreignKey:ID"`
 	Danceability     float64   `json:"danceability,omitempty" gorm:"type:decimal(7,6);"`
 	Energy           float64   `json:"energy,omitempty" gorm:"type:decimal(7,6);"`
