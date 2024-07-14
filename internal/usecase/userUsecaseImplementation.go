@@ -30,6 +30,12 @@ func (uc *UserUseCaseImplementation) FindUserByID(id uuid.UUID) *model.User {
 
 	return foundedUser
 }
+
+func (uc *UserUseCaseImplementation) FindUserByUsername(username string) *model.User {
+	foundedUser := uc.repository.FindUserByUsername(username)
+
+	return foundedUser
+}
 func (uc *UserUseCaseImplementation) FindMatch(id uuid.UUID) *model.User {
 	return uc.repository.FindMatch(id)
 }
