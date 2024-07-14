@@ -9,5 +9,6 @@ type UserRepository interface {
 	CreateUser(user *model.User)
 	DeleteUserByID(id uuid.UUID)
 	FindUserByID(id uuid.UUID) *model.User
+	FindUserByUsername(username string) *model.User
 	FindMatch(id uuid.UUID) *model.User
 }
