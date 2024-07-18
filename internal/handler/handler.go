@@ -30,5 +30,9 @@ func (h *Handler) Handle() http.Handler {
 	r.GET("/MatchingApp/validate", h.RequireAuth, h.Validate)
 	r.GET("/MatchingApp/validate/", h.RequireAuth, h.Validate)
 
+	r.POST("/MatchingApp/createPlaylist", h.RequireAuth, h.playlistHandler)
+	r.POST("/MatchingApp/createPlaylist/", h.RequireAuth, h.playlistHandler)
+	r.GET("/MatchingApp/addPlaylist", h.RequireAuth, h.playlistHandler)
+	r.GET("/MatchingApp/addPlaylist/", h.RequireAuth, h.playlistHandler)
 	return r
 }
