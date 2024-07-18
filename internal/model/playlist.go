@@ -6,7 +6,9 @@ import (
 
 type Playlist struct {
 	ID               uuid.UUID `json:"id,omitempty" gorm:"type:uuid;default:uuid_generate_v4()"`
+	PlaylistKey      string    `json:"playlist_key,omitempty" gorm:"type:text"`
 	UserID           uuid.UUID `json:"userId,omitempty" gorm:"type:uuid;references:ID;foreignKey:ID"`
+	UserName         string    `json:"userName,omitempty" gorm:"type:varchar(255)"`
 	Danceability     float64   `json:"danceability,omitempty" gorm:"type:decimal(7,6);"`
 	Energy           float64   `json:"energy,omitempty" gorm:"type:decimal(7,6);"`
 	Key              float64   `json:"key,omitempty" gorm:"type:decimal(7,6);"`
