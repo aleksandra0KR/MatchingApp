@@ -1,7 +1,7 @@
 package kafka
 
 type Message struct {
-	ID    string `json:"id"`
-	Name  string `json:"name"`
-	Value string `json:"value"`
+	Username   string `json:"user_name"`
+	UserId     string `json:"user_id"`
+	PlaylistID string `json:"playlist_id"`
 }
