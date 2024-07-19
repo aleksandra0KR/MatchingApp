@@ -1,28 +1,35 @@
 package kafka
 
 import (
+	"MatchingApp/internal/model/kafka"
+	"encoding/json"
+	"fmt"
 	"github.com/IBM/sarama"
 	"log"
-	"sync"
 )
 
-type Producer struct {
-	responseChannels map[string]chan *sarama.ConsumerMessage
-	mu               sync.Mutex
-	producer         sarama.SyncProducer
+func SetUpProducer() *sarama.SyncProducer {
+	config := sarama.NewConfig()
+	config.Producer.RequiredAcks = sarama.WaitForAll
+	config.Producer.Retry.Max = 10
+	config.Producer.Return.Successes = true
+	producer, err := sarama.NewSyncProducer([]string{"localhost:9092"},
+		config)
+	if err != nil {
+		log.Fatalf("failed to setup producer: %v", err)
+	}
+	return &producer
 }
 
-func (p *Producer) NewProducer() *Producer {
+func SendMessage(producer *sarama.SyncProducer, topic string, message kafka.Message) {
+	msg := &sarama.ProducerMessage{}
+	msg.Topic = "input_topic"
+	bytes, _ := json.Marshal(message)
+	msg.Value = sarama.ByteEncoder(bytes)
 
-	producer, err := sarama.NewSyncProducer([]string{"kafka:8085"}, nil)
+	partition, offset, err := (*producer).SendMessage(msg)
 	if err != nil {
-		log.Fatalf("Failed to create producer: %v", err)
+		panic(err)
 	}
-
-	pr := Producer{
-		responseChannels: make(map[string]chan *sarama.ConsumerMessage),
-		mu:               sync.Mutex{},
-		producer:         producer,
-	}
-	return &pr
+	fmt.Printf("Message is stored in partition %d at offset %d\n", partition, offset)
 }
