@@ -9,17 +9,17 @@ type Playlist struct {
 	PlaylistKey      string    `json:"playlist_key,omitempty" gorm:"type:text"`
 	UserID           uuid.UUID `json:"userId,omitempty" gorm:"type:uuid;references:ID;foreignKey:ID"`
 	UserName         string    `json:"userName,omitempty" gorm:"type:varchar(255)"`
-	Danceability     float64   `json:"danceability,omitempty" gorm:"type:decimal(7,6);"`
-	Energy           float64   `json:"energy,omitempty" gorm:"type:decimal(7,6);"`
-	Key              float64   `json:"key,omitempty" gorm:"type:decimal(7,6);"`
-	Loudness         float64   `json:"loudness,omitempty" gorm:"type:decimal(7,6);"`
-	Mode             float64   `json:"mode,omitempty" gorm:"type:decimal(7,6);"`
-	Speechiness      float64   `json:"speechiness,omitempty" gorm:"type:decimal(7,6);"`
-	Acousticness     float64   `json:"acousticness,omitempty" gorm:"type:decimal(7,6);"`
-	Instrumentalness float64   `json:"instrumentalness,omitempty" gorm:"type:decimal(7,6);"`
-	Liveness         float64   `json:"liveness,omitempty" gorm:"type:decimal(7,6);"`
-	Valence          float64   `json:"valence,omitempty" gorm:"type:decimal(7,6);"`
-	Tempo            float64   `json:"tempo,omitempty" gorm:"type:decimal(7,6);"`
-	Duration_ms      float64   `json:"duration_ms,omitempty" gorm:"type:decimal(7,6);"`
-	Time_signature   float64   `json:"time_signature,omitempty" gorm:"type:decimal(7,6);"`
+	Danceability     float64   `json:"danceability,omitempty" gorm:"type:DOUBLE PRECISION;"`
+	Energy           float64   `json:"energy,omitempty" gorm:"type:DOUBLE PRECISION;"`
+	Key              float64   `json:"key,omitempty" gorm:"type:DOUBLE PRECISION;"`
+	Loudness         float64   `json:"loudness,omitempty" gorm:"type:DOUBLE PRECISION;"`
+	Mode             float64   `json:"mode,omitempty" gorm:"type:DOUBLE PRECISION;"`
+	Speechiness      float64   `json:"speechiness,omitempty" gorm:"type:DOUBLE PRECISION;"`
+	Acousticness     float64   `json:"acousticness,omitempty" gorm:"type:DOUBLE PRECISION;"`
+	Instrumentalness float64   `json:"instrumentalness,omitempty" gorm:"type:DOUBLE PRECISION;"`
+	Liveness         float64   `json:"liveness,omitempty" gorm:"type:DOUBLE PRECISION;"`
+	Valence          float64   `json:"valence,omitempty" gorm:"type:DOUBLE PRECISION;"`
+	Tempo            float64   `json:"tempo,omitempty" gorm:"type:DOUBLE PRECISION;"`
+	Duration_ms      float64   `json:"duration_ms,omitempty" gorm:"type:DOUBLE PRECISION;"`
+	Time_signature   float64   `json:"time_signature,omitempty" gorm:"type:DOUBLE PRECISION;"`
 }
