@@ -2,18 +2,21 @@ package handler
 
 import (
 	"MatchingApp/internal/usecase"
+	"github.com/IBM/sarama"
 	"github.com/gin-gonic/gin"
 	"html/template"
 	"net/http"
 )
 
 type Handler struct {
-	service *usecase.UseCase
-	tpl     *template.Template
+	service  *usecase.UseCase
+	tpl      *template.Template
+	consumer *sarama.Consumer
+	producer *sarama.SyncProducer
 }
 
-func NewHandler(service *usecase.UseCase, tpl *template.Template) *Handler {
-	return &Handler{service: service, tpl: tpl}
+func NewHandler(service *usecase.UseCase, tpl *template.Template, consumer *sarama.Consumer, producer *sarama.SyncProducer) *Handler {
+	return &Handler{service: service, tpl: tpl, consumer: consumer, producer: producer}
 }
 
 func (h *Handler) Handle() http.Handler {
@@ -34,5 +37,8 @@ func (h *Handler) Handle() http.Handler {
 	r.POST("/MatchingApp/createPlaylist/", h.RequireAuth, h.playlistHandler)
 	r.GET("/MatchingApp/addPlaylist", h.RequireAuth, h.playlistHandler)
 	r.GET("/MatchingApp/addPlaylist/", h.RequireAuth, h.playlistHandler)
+	r.GET("/MatchingApp/match", h.RequireAuth, h.playlistHandler)
+	r.GET("/MatchingApp/match/", h.RequireAuth, h.playlistHandler)
+
 	return r
 }
