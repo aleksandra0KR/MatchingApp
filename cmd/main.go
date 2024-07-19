@@ -6,6 +6,7 @@ import (
 	"MatchingApp/internal/repository"
 	"MatchingApp/internal/server"
 	"MatchingApp/internal/usecase"
+	"MatchingApp/kafka"
 	"github.com/gofrs/uuid/v5"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -42,8 +43,9 @@ func main() {
 	repo.PlaylistRepository.CreatePlaylist(&model.Playlist{UserID: uu, Energy: 1})
 
 	useCase := usecase.NewUseCase(repo)
-
-	handler := handler2.NewHandler(useCase, tpl)
+	produser := kafka.SetUpProducer()
+	consumer := kafka.SetUpConsumer()
+	handler := handler2.NewHandler(useCase, tpl, consumer, produser)
 
 	var srv server.Server
 	err = srv.Run("8080", handler.Handle())
