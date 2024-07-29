@@ -3,6 +3,7 @@ body {
     height: 1024px;
     width: 1440px;
     position: relative;
+    font-family: Georgia, serif;
 }
 
 .SingUpForm {
@@ -37,49 +38,31 @@ body {
 .Username {
     width: 83px;
     height: 16px;
-    left: 448px;
     top: 398px;
-    position: absolute;
-    color: black;
-    font-size: 15px;
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 600;
-    word-wrap: break-word
 }
 
 .Password {
     width: 75px;
     height: 14px;
-    left: 442px;
     top: 510px;
-    position: absolute;
-    color: black;
-    font-size: 15px;
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 600;
-    word-wrap: break-word
 }
 
 .Email {
     width: 44px;
     height: 14px;
-    left: 448px;
     top: 617px;
-    position: absolute;
-    color: black;
-    font-size: 15px;
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 600;
-    word-wrap: break-word
 }
 
 .Username, .Email, .Password {
     background: none; /* Remove background */
     border: none; /* Remove border */
     outline: none; /* Remove outline */
+    font-size: 15px;
+    font-weight: 400;
+    left: 442px;
+    position: absolute;
+    color: black;
+    word-wrap: break-word
 }
 
 ::placeholder {
@@ -95,8 +78,6 @@ body {
     position: absolute;
     background: rgba(175.24, 138.24, 235.62, 0.64);
     border-radius: 30px;
-    font-size: 18px;
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 400;
 }
