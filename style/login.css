@@ -1,0 +1,75 @@
+body {
+    background-image: url("img/background.png");
+    height: 1024px;
+    width: 1440px;
+    position: relative;
+    font-family: Georgia, serif;
+}
+
+.LoginForm {
+    width: 640px;
+    height: 494.98px;
+    left: 400px;
+    top: 265px;
+    position: absolute;
+    background: rgba(217, 217, 217, 0.13)
+}
+
+.Line1, .Line2{
+    width: 539px;
+    height: 0;
+    left: 442px;
+    position: absolute;
+    border: 1px black solid;
+}
+
+.Line1 {
+    top: 446px;
+}
+
+.Line2 {
+    top: 571px;
+}
+
+
+.Username {
+    width: 83px;
+    height: 16px;
+    top: 418px;
+}
+
+.Password {
+    width: 75px;
+    height: 14px;
+    top: 545px;
+}
+
+
+.Username, .Password {
+    background: none; /* Remove background */
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    font-size: 15px;
+    font-weight: 400;
+    left: 442px;
+    position: absolute;
+    color: black;
+    word-wrap: break-word
+}
+
+::placeholder {
+    color: black;
+}
+
+.submit {
+    border: none;
+    width: 215px;
+    height: 44px;
+    left: 612px;
+    top: 675px;
+    position: absolute;
+    background: rgba(175.24, 138.24, 235.62, 0.64);
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 400;
+}

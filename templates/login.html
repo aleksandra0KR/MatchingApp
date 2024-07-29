@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <link rel="stylesheet" href="../style/login.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
 <body>
-
-<h2>Login</h2><br>
 
 <form action="/MatchingApp/loginUser" method="POST">
 
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username" placeholder="username"><br>
+    <div class="LoginForm"></div>
+    <div class="Login" style="width: 173px; height: 46px; left: 643px; top: 288px; position: absolute; color: black; font-size: 40px; font-family: Inter; font-style: italic; font-weight: 600; word-wrap: break-word">LOGIN</div>
 
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" placeholder="password"><br><br>
+    <input type="text" id="username" name="username" placeholder="Username" class="Username"><br>
+    <div class="Line1"></div>
 
-    <input type="submit" value="Submit">
+    <input type="password" id="password" name="password" placeholder="Password" class="Password"><br><br>
+    <div class="Line2"></div>
+
+    <input type="submit"  class="submit" value="Login">
 </form>
 
 </body>
