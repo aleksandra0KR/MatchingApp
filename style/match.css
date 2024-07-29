@@ -1,0 +1,42 @@
+body {
+    background-image: url("img/background.png");
+    height: 1024px;
+    width: 1440px;
+    position: relative;
+    font-family: Georgia, serif;
+}
+
+.SingUpForm {
+    width: 640px;
+    height: 494.98px;
+    left: 400px;
+    top: 265px;
+    position: absolute;
+    background: rgba(217, 217, 217, 0.13)
+}
+
+.Line1 {
+    width: 539px;
+    height: 0;
+    left: 442px;
+    position: absolute;
+    border: 1px black solid;
+
+    top: 426px;
+}
+
+.Username {
+    width: 83px;
+    height: 16px;
+    top: 398px;
+    background: none; /* Remove background */
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    font-size: 15px;
+    font-weight: 400;
+    left: 442px;
+    position: absolute;
+    color: black;
+    word-wrap: break-word
+}
+
