@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <link rel="stylesheet" href="../style/enterPlaylistInformation.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
 <body>
-
-<h2>Enter Playlist ID</h2><br>
 
 <form action="/MatchingApp/createPlaylist" method="POST">
 
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username" placeholder="username"><br>
+    <div class="EnterPlaylistInfoForm"></div>
+    <div class="SingUp" style="width: 489px; height: 46px; left: 500px; top: 288px; position: absolute; color: black; font-size: 40px; font-family: Inter; font-style: italic; font-weight: 600; word-wrap: break-word">Enter Playlist Information</div>
 
-    <label for="playlistId">PlaylistId:</label><br>
-    <input type="text" id="playlistId" name="playlistId" placeholder="playlist id"><br><br>
+    <input type="text" id="username" name="username" placeholder="Username" class="Username"><br>
+    <div class="Line1"></div>
 
-    <input type="submit" value="Submit">
+    <input type="text" id="playlistID" name="playlistID" placeholder="Playlist ID" class="PlaylistID"><br><br>
+    <div class="Line2"></div>
+
+    <input type="submit"  class="submit" value="Submit">
 </form>
 
 </body>
