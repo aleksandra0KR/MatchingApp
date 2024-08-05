@@ -43,10 +43,17 @@ func main() {
 	repo.PlaylistRepository.CreatePlaylist(&model.Playlist{UserID: uu, Energy: 1})
 
 	useCase := usecase.NewUseCase(repo)
-	produser := kafka.SetUpProducer()
+	producer := kafka.SetUpProducer()
 	consumer := kafka.SetUpConsumer()
-	handler := handler2.NewHandler(useCase, tpl, consumer, produser)
+	handler := handler2.NewHandler(useCase, tpl, consumer, producer)
 
 	var srv server.Server
 	err = srv.Run("8080", handler.Handle())
 }
+
+/*
+test data
+
+username: eric
+playlist id : 2DLfBC25Ven3wR1Sujbd8R
+*/
