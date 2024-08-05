@@ -1,0 +1,35 @@
+.MenuLogin, .MenuSingUp, .MenuFindMatch, .MenuAddPlaylist {
+    top: 53px;
+    position: absolute;
+    color: white;
+    font-size: 32px;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 400;
+    word-wrap: break-word;
+    text-decoration: none;
+}
+
+.MenuLogin {
+    width: 106px;
+    height: 38px;
+    left: 106px;
+}
+
+.MenuSingUp {
+    width: 108px;
+    height: 38px;
+    left: 425px;
+}
+
+.MenuAddPlaylist {
+    width: 183px;
+    height: 38px;
+    left: 744px;
+}
+
+.MenuFindMatch {
+    width: 183px;
+    height: 38px;
+    left: 1140px;
+}
