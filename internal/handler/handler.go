@@ -21,9 +21,13 @@ func NewHandler(service *usecase.UseCase, tpl *template.Template, consumer *sara
 
 func (h *Handler) Handle() http.Handler {
 	r := gin.Default()
+	r.SetHTMLTemplate(h.tpl)
+	r.Static("/MatchingApp/stylesheet", "./templates/stylesheet")
 
 	r.GET("/MatchingApp", h.userHandler)
 	r.GET("/MatchingApp/", h.userHandler)
+	r.GET("/MatchingApp/registrationUser", h.userHandler)
+	r.GET("/MatchingApp/registrationUser/", h.userHandler)
 	r.POST("/MatchingApp/createUser", h.userHandler)
 	r.POST("/MatchingApp/createUser/", h.userHandler)
 	r.GET("/MatchingApp/login", h.userHandler)
