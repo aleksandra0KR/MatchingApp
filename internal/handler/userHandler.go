@@ -2,11 +2,11 @@ package handler
 
 import (
 	"MatchingApp/internal/model"
+	"MatchingApp/internal/passwordHelpers"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/gofrs/uuid/v5"
 	"github.com/golang-jwt/jwt/v5"
-	"golang.org/x/crypto/bcrypt"
 	"log"
 	"net/http"
 	"os"
@@ -54,24 +54,16 @@ func (h *Handler) createUser(c *gin.Context) {
 	password := c.PostForm("password")
 	email := c.PostForm("email")
 
-	hash, err := bcrypt.GenerateFromPassword([]byte(password), 10)
-
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Failed to hash password.",
-		})
-		return
-	}
 	var user model.User
 	user.Username = username
-	user.Password = string(hash)
+	user.Password = passwordHelpers.PasswordGenerator(password)
 	user.Email = email
 
 	h.service.UserUseCase.CreateUser(&user)
 
 	log.Printf("createUser is completed")
 	c.Status(http.StatusCreated)
-	_, err = c.Writer.Write([]byte("user is created "))
+	_, err := c.Writer.Write([]byte("user is created "))
 	if err != nil {
 		c.AbortWithError(http.StatusInternalServerError, err)
 		return
@@ -101,9 +93,9 @@ func (h *Handler) loginUser(c *gin.Context) {
 	}
 
 	// Compare sent in password with saved users password
-	err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password))
+	checker := passwordHelpers.CheckPass(user.Password, password)
 
-	if err != nil {
+	if checker != true {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": "Invalid email or password",
 		})
