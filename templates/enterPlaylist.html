@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="../style/enterPlaylistInformation.css">
+    <link rel="stylesheet" href="/MatchingApp/stylesheet/enterPlaylistInformation.css">
+    <link rel="stylesheet" href="/MatchingApp/stylesheet/menu.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add Playlist</title>
 </head>
 <body>
+
+<a class="MenuLogin" href="/MatchingApp/login">Login</a>
+<a class="MenuSingUp" href="registration.html">Sing Up</a>
+<a class="MenuAddPlaylist" href="enterPlaylist.html">AddPlaylist</a>
+<a class="MenuFindMatch" href="/MatchingApp/match/">Find Match</a>
+
 
 <form action="/MatchingApp/createPlaylist" method="POST">
 
     <div class="EnterPlaylistInfoForm"></div>
-    <div class="SingUp" style="width: 489px; height: 46px; left: 500px; top: 288px; position: absolute; color: black; font-size: 40px; font-family: Inter; font-style: italic; font-weight: 600; word-wrap: break-word">Enter Playlist Information</div>
+    <div class="EnterPlaylistInfo"
+         style="width: 489px; height: 46px; left: 500px; top: 288px; position: absolute; color: black; font-size: 40px; font-family: Inter; font-style: italic; font-weight: 600; word-wrap: break-word">
+        Enter Playlist Information
+    </div>
 
     <input type="text" id="username" name="username" placeholder="Username" class="Username"><br>
     <div class="Line1"></div>
@@ -18,7 +28,7 @@
     <input type="text" id="playlistID" name="playlistID" placeholder="Playlist ID" class="PlaylistID"><br><br>
     <div class="Line2"></div>
 
-    <input type="submit"  class="submit" value="Submit">
+    <input type="submit" class="submit" value="Submit">
 </form>
 
 </body>

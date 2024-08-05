@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../style/match.css">
+    <link rel="stylesheet" href="/MatchingApp/stylesheet/match.css">
+    <link rel="stylesheet" href="/MatchingApp/stylesheet/menu.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Match</title>
 </head>
 <body>
 
-<div class="MatchForm"></div>
-<div class="Match" style="width: 489px; height: 46px; left: 560px; top: 288px; position: absolute; color: black; font-size: 40px; font-family: Inter; font-style: italic; font-weight: 600; word-wrap: break-word">YOUR MATCH IS</div>
+<a class="MenuLogin" href="/MatchingApp/login">Login</a>
+<a class="MenuSingUp" href="registration.html">Sing Up</a>
+<a class="MenuAddPlaylist" href="enterPlaylist.html">AddPlaylist</a>
+<a class="MenuFindMatch" href="/MatchingApp/match/">Find Match</a>
 
-<div id="username" name="username"  class="Username"> {{.}} </div>
+
+<div class="MatchForm"></div>
+<div class="Match"
+     style="width: 489px; height: 46px; left: 560px; top: 288px; position: absolute; color: black; font-size: 40px; font-family: Inter; font-style: italic; font-weight: 600; word-wrap: break-word">
+    YOUR MATCH IS
+</div>
+
+<div id="username" name="username" class="Username"> {{.}}</div>
 <div class="Line1"></div>
 
 </body>

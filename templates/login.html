@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="../style/login.css">
+    <link rel="stylesheet" href="/MatchingApp/stylesheet/login.css">
+    <link rel="stylesheet" href="/MatchingApp/stylesheet/menu.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
 </head>
 <body>
+
+<a class="MenuLogin" href="/MatchingApp/login">Login</a>
+<a class="MenuSingUp" href="registration.html">Sing Up</a>
+<a class="MenuAddPlaylist" href="enterPlaylist.html">AddPlaylist</a>
+<a class="MenuFindMatch" href="/MatchingApp/match/">Find Match</a>
 
 <form action="/MatchingApp/loginUser" method="POST">
 
     <div class="LoginForm"></div>
-    <div class="Login" style="width: 173px; height: 46px; left: 643px; top: 288px; position: absolute; color: black; font-size: 40px; font-family: Inter; font-style: italic; font-weight: 600; word-wrap: break-word">LOGIN</div>
+    <div class="Login"
+         style="width: 173px; height: 46px; left: 643px; top: 288px; position: absolute; color: black; font-size: 40px; font-family: Inter; font-style: italic; font-weight: 600; word-wrap: break-word">
+        LOGIN
+    </div>
 
     <input type="text" id="username" name="username" placeholder="Username" class="Username"><br>
     <div class="Line1"></div>
@@ -18,7 +27,7 @@
     <input type="password" id="password" name="password" placeholder="Password" class="Password"><br><br>
     <div class="Line2"></div>
 
-    <input type="submit"  class="submit" value="Login">
+    <input type="submit" class="submit" value="Login">
 </form>
 
 </body>
