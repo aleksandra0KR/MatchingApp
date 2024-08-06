@@ -33,7 +33,7 @@ func (h *Handler) userHandler(c *gin.Context) {
 		} else if (regexp.MustCompile(`/MatchingApp/registrationUser*`)).MatchString(c.Request.URL.String()) {
 			h.registrationUser(c)
 		} else {
-			h.Validate(c)
+			h.registrationUser(c)
 		}
 	default:
 		c.AbortWithStatus(http.StatusMethodNotAllowed)
@@ -63,11 +63,7 @@ func (h *Handler) createUser(c *gin.Context) {
 
 	log.Printf("createUser is completed")
 	c.Status(http.StatusCreated)
-	_, err := c.Writer.Write([]byte("user is created "))
-	if err != nil {
-		c.AbortWithError(http.StatusInternalServerError, err)
-		return
-	}
+	h.login(c)
 }
 
 func (h *Handler) login(c *gin.Context) {
@@ -122,7 +118,7 @@ func (h *Handler) loginUser(c *gin.Context) {
 	c.SetSameSite(http.SameSiteLaxMode)
 	c.SetCookie("Authorization", tokenString, 3600*24*30, "", "", false, true)
 
-	c.JSON(http.StatusOK, gin.H{})
+	c.HTML(http.StatusOK, "loginSuccessfully.html", gin.H{})
 
 }
 
