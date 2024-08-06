@@ -2,9 +2,8 @@ package passwordHelpers
 
 import "bytes"
 
-func CheckPass(passHash string, plainPassword string) bool {
-	passHashBytes := []byte(passHash)
-	salt := passHashBytes[:8]
+func CheckPass(passHash []byte, plainPassword string) bool {
+	salt := passHash[:8]
 	userPassHash := hashPass(salt, plainPassword)
-	return bytes.Equal(userPassHash, passHashBytes)
+	return bytes.Equal(userPassHash, passHash)
 }
