@@ -16,7 +16,7 @@ func NewUserUseCaseImplementation(repository repository.UserRepository) *UserUse
 }
 
 func (uc *UserUseCaseImplementation) CreateUser(user *model.User) {
-	if user.Email == "" || user.Password == "" || user.Username == "" {
+	if user.Email == "" || user.Password == nil || user.Username == "" {
 		fmt.Errorf("all fileds can't be empty")
 	}
 	uc.repository.CreateUser(user)

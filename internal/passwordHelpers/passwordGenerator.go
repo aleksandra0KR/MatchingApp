@@ -14,7 +14,7 @@ func generateRandomBytes(n int) []byte {
 	return make([]byte, n)
 }
 
-func PasswordGenerator(plainPassword string) string {
+func PasswordGenerator(plainPassword string) []byte {
 	salt := generateRandomBytes(8)
-	return string(hashPass(salt, plainPassword))
+	return hashPass(salt, plainPassword)
 }
