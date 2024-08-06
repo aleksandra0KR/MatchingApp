@@ -48,7 +48,7 @@ func (h *Handler) addPlaylist(c *gin.Context) {
 func (h *Handler) createPlaylist(c *gin.Context) {
 	fmt.Println("*****registerAuthHandler running*****")
 	user, _ := c.Get("user")
-	playlistId := c.PostForm("playlistId")
+	playlistId := c.PostForm("playlistID")
 	username := c.PostForm("username")
 	var playlist model.Playlist
 	playlist.UserName = username
@@ -65,19 +65,20 @@ func (h *Handler) createPlaylist(c *gin.Context) {
 		return
 	}*/
 	message := kafka.ReadMessage(h.consumer, "")
-	log.Println("*****addPlaylist running*****")
+	log.Println("*****matchingPlaylist running*****")
 	err := h.tpl.ExecuteTemplate(c.Writer, "match.html", message)
 	if err != nil {
 		c.AbortWithError(http.StatusInternalServerError, err)
 		return
 	}
+	//c.HTML(http.StatusOK, "loginSuccessfully.html", gin.H{})
 }
 
 func (h *Handler) matchingPlaylist(c *gin.Context) {
 	fmt.Println("ewf")
 	message := kafka.ReadMessage(h.consumer, "")
 	fmt.Println(message)
-	log.Println("*****addPlaylist running*****")
+	log.Println("*****matchingPlaylist running*****")
 	err := h.tpl.ExecuteTemplate(c.Writer, "match.html", message)
 	if err != nil {
 		c.AbortWithError(http.StatusInternalServerError, err)
