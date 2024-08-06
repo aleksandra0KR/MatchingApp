@@ -6,15 +6,6 @@ body {
     font-family: Georgia, serif;
 }
 
-.SingUpForm {
-    width: 640px;
-    height: 494.98px;
-    left: 400px;
-    top: 265px;
-    position: absolute;
-    background: rgba(217, 217, 217, 0.13)
-}
-
 .Line1 {
     width: 539px;
     height: 0;
@@ -26,17 +17,29 @@ body {
 }
 
 .Username {
-    width: 83px;
-    height: 16px;
+    width: 100%;
+    height: 100%;
     top: 398px;
     background: none; /* Remove background */
     border: none; /* Remove border */
     outline: none; /* Remove outline */
-    font-size: 15px;
+    font-size: 25px;
     font-weight: 400;
     left: 442px;
     position: absolute;
     color: black;
-    word-wrap: break-word
 }
 
+.Match {
+    width: 489px;
+    height: 46px;
+    left: 560px;
+    top: 288px;
+    position: absolute;
+    color: black;
+    font-size: 40px;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 600;
+    word-wrap: break-word;
+}
