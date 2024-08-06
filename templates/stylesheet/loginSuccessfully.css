@@ -1,0 +1,20 @@
+body {
+    background-image: url("img/Desktop - 6.png");
+    height: 1024px;
+    width: 1440px;
+    position: relative;
+    font-family: Georgia, serif;
+}
+
+.YouHaveSuccessfullyLoggedIn {
+    width: 631px;
+    height: 66px;
+    left: 454px;
+    top: 426px;
+    position: absolute;
+    color: black;
+    font-size: 40px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word
+}
