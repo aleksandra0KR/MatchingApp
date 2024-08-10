@@ -6,9 +6,9 @@ import (
 )
 
 type UserRepository interface {
-	CreateUser(user *model.User)
-	DeleteUserByID(id uuid.UUID)
-	FindUserByID(id uuid.UUID) *model.User
-	FindUserByUsername(username string) *model.User
+	CreateUser(user *model.User) error
+	DeleteUserByID(id uuid.UUID) error
+	FindUserByID(id uuid.UUID) (*model.User, error)
+	FindUserByUsername(username string) (*model.User, error)
 	FindMatch(id uuid.UUID) *model.User
 }
