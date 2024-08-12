@@ -79,7 +79,10 @@ func (h *Handler) loginUser(c *gin.Context) {
 	username := c.PostForm("username")
 	password := c.PostForm("password")
 
-	user := h.service.FindUserByUsername(username)
+	user, err := h.service.FindUserByUsername(username)
+	if err != nil {
+		c.AbortWithError(http.StatusInternalServerError, err)
+	}
 
 	if user.ID == uuid.Nil {
 		c.JSON(http.StatusBadRequest, gin.H{
