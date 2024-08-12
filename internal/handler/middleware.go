@@ -38,13 +38,16 @@ func (h *Handler) RequireAuth(c *gin.Context) {
 		}
 
 		// Find the user with token Subject
-		var user model.User
+		var user *model.User
 		userID, err := uuid.FromString(claims["sub"].(string))
 		fmt.Println(userID)
 		if err != nil {
 			// Handle the error
 		}
-		user = *h.service.FindUserByID(userID)
+		user, err = h.service.FindUserByID(userID)
+		if err != nil {
+			c.AbortWithStatus(http.StatusUnauthorized)
+		}
 
 		if user.ID == uuid.Nil {
 			c.AbortWithStatus(http.StatusUnauthorized)
