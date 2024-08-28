@@ -10,12 +10,17 @@ import (
 	"github.com/gofrs/uuid/v5"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"html/template"
 	"log"
+
+	"html/template"
 )
 
 var tpl *template.Template
 
+// @title Matching App
+// @description finding your spotify match
+// @host localhost:8080
+// @BasePath /MatchingApp
 func main() {
 
 	tpl, _ = template.ParseGlob("templates/*.html")
