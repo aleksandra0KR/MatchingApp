@@ -18,10 +18,7 @@ func (h *Handler) playlistHandler(c *gin.Context) {
 	case http.MethodPost:
 		if (regexp.MustCompile(`/MatchingApp/createPlaylist*`)).MatchString(c.Request.URL.String()) {
 			h.createPlaylist(c)
-		} else {
-			//	h.(c)
 		}
-
 	case http.MethodDelete:
 	case http.MethodPut:
 	case http.MethodGet:
@@ -29,14 +26,19 @@ func (h *Handler) playlistHandler(c *gin.Context) {
 			h.matchingPlaylist(c)
 		} else if (regexp.MustCompile(`/MatchingApp/addPlaylist*`)).MatchString(c.Request.URL.String()) {
 			h.addPlaylist(c)
-		} else {
-			//	h.Validate(c)
 		}
 	default:
 		c.AbortWithStatus(http.StatusMethodNotAllowed)
 	}
 }
 
+// addPlaylist godoc
+// @Summary redirect to post request with html page
+// @Description Render the template to add a playlist.
+// @Tags playlists
+// @Accept  json
+// @Produce  html
+// @Router /addPlaylist [get]
 func (h *Handler) addPlaylist(c *gin.Context) {
 	log.Println("*****addPlaylist running*****")
 	err := h.tpl.ExecuteTemplate(c.Writer, "enterPlaylist.html", nil)
@@ -45,6 +47,18 @@ func (h *Handler) addPlaylist(c *gin.Context) {
 		return
 	}
 }
+
+// createPlaylist godoc
+// @Summary Add a new playlist
+// @Description Create a new playlist for the authenticated user in their profile based on which program will find match.
+// @Tags playlists
+// @Accept  json
+// @Produce  json
+// @Param playlistID formData string true "Playlist ID"
+// @Param username formData string true "Username"
+// @Success 200 {object} string "Playlist created successfully"
+// @Failure 500 {object} string "Internal Server Error"
+// @Router /createPlaylist [post]
 func (h *Handler) createPlaylist(c *gin.Context) {
 	fmt.Println("*****registerAuthHandler running*****")
 	user, _ := c.Get("user")
@@ -74,6 +88,13 @@ func (h *Handler) createPlaylist(c *gin.Context) {
 	//c.HTML(http.StatusOK, "loginSuccessfully.html", gin.H{})
 }
 
+// matchingPlaylist godoc
+// @Summary Match a playlist
+// @Description Match a playlist and render the template.
+// @Tags playlists
+// @Accept  json
+// @Produce  html
+// @Router /match [get]
 func (h *Handler) matchingPlaylist(c *gin.Context) {
 	fmt.Println("ewf")
 	message := kafka.ReadMessage(h.consumer, "")

@@ -1,7 +1,89 @@
 {
     "swagger": "2.0",
     "info": {
+        "description": "finding your spotify match",
+        "title": "Matching App",
         "contact": {}
     },
-    "paths": {}
+    "host": "localhost:8080",
+    "basePath": "/MatchingApp",
+    "paths": {
+        "/addPlaylist": {
+            "get": {
+                "description": "Render the template to add a playlist.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "tags": [
+                    "playlists"
+                ],
+                "summary": "redirect to post request with html page",
+                "responses": {}
+            }
+        },
+        "/createPlaylist": {
+            "post": {
+                "description": "Create a new playlist for the authenticated user in their profile based on which program will find match.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "playlists"
+                ],
+                "summary": "Add a new playlist",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Playlist ID",
+                        "name": "playlistID",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Username",
+                        "name": "username",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Playlist created successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/match": {
+            "get": {
+                "description": "Match a playlist and render the template.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "tags": [
+                    "playlists"
+                ],
+                "summary": "Match a playlist",
+                "responses": {}
+            }
+        }
+    }
 }

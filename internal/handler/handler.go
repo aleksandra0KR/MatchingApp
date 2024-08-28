@@ -1,9 +1,12 @@
 package handler
 
 import (
+	_ "MatchingApp/docs" // Import the generated docs package
 	"MatchingApp/internal/usecase"
 	"github.com/IBM/sarama"
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 	"html/template"
 	"net/http"
 )
@@ -43,6 +46,8 @@ func (h *Handler) Handle() http.Handler {
 	r.GET("/MatchingApp/addPlaylist/", h.RequireAuth, h.playlistHandler)
 	r.GET("/MatchingApp/match", h.RequireAuth, h.playlistHandler)
 	r.GET("/MatchingApp/match/", h.RequireAuth, h.playlistHandler)
+
+	r.GET("/MatchingApp/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	return r
 }

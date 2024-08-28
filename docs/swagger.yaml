@@ -1,4 +1,61 @@
+basePath: /MatchingApp
+host: localhost:8080
 info:
   contact: {}
-paths: {}
+  description: finding your spotify match
+  title: Matching App
+paths:
+  /addPlaylist:
+    get:
+      consumes:
+      - application/json
+      description: Render the template to add a playlist.
+      produces:
+      - text/html
+      responses: {}
+      summary: redirect to post request with html page
+      tags:
+      - playlists
+  /createPlaylist:
+    post:
+      consumes:
+      - application/json
+      description: Create a new playlist for the authenticated user in their profile
+        based on which program will find match.
+      parameters:
+      - description: Playlist ID
+        in: formData
+        name: playlistID
+        required: true
+        type: string
+      - description: Username
+        in: formData
+        name: username
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Playlist created successfully
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Add a new playlist
+      tags:
+      - playlists
+  /match:
+    get:
+      consumes:
+      - application/json
+      description: Match a playlist and render the template.
+      produces:
+      - text/html
+      responses: {}
+      summary: Match a playlist
+      tags:
+      - playlists
 swagger: "2.0"
