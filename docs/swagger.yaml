@@ -47,6 +47,86 @@ paths:
       summary: Add a new playlist
       tags:
       - playlists
+  /createUser:
+    post:
+      consumes:
+      - application/json
+      description: Create a new user with the provided username, password, and email.
+      parameters:
+      - description: Username
+        in: formData
+        name: username
+        required: true
+        type: string
+      - description: Password
+        in: formData
+        name: password
+        required: true
+        type: string
+      - description: Email
+        in: formData
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: User created successfully
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Create a new user
+      tags:
+      - users
+  /login:
+    get:
+      consumes:
+      - application/json
+      description: Render the template to login a user
+      produces:
+      - text/html
+      responses: {}
+      summary: Render the login page
+      tags:
+      - users
+  /loginUser:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate a user with the provided username and password.
+      parameters:
+      - description: Username
+        in: formData
+        name: username
+        required: true
+        type: string
+      - description: Password
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Login successful
+          schema:
+            type: string
+        "400":
+          description: Invalid username or password
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Login a user
+      tags:
+      - users
   /match:
     get:
       consumes:
@@ -58,4 +138,16 @@ paths:
       summary: Match a playlist
       tags:
       - playlists
+  /registrationUser:
+    get:
+      consumes:
+      - application/json
+      description: Render the template to register a new user.
+      produces:
+      - text/html
+      responses: {}
+      summary: Render the registration page and redirect to registration page with
+        html
+      tags:
+      - users
 swagger: "2.0"
